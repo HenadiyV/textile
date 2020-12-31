@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+//use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Model //Authenticatable
 {
     use Notifiable;
 
@@ -16,7 +17,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','firstName',
+'lastName',
+'info_user',
     ];
 
     /**
@@ -36,4 +39,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user_address() {
+        return $this->hasMany('App\Models\TextileUserAddress');
+    }
+
+    public function user_phone() {
+        return $this->hasMany('App\Models\TextileUserPhone');
+    }
+
+    public function user_post_office() {
+        return $this->hasMany('App\Models\TextileUserPostOffice');
+    }
+    public function user_additional() {
+        return $this->hasMany('App\Models\TextileUserAdditional');
+    }
+    public function user_setting() {
+        return $this->hasMany('App\Models\TextileUserSetting');
+    }
+    public function roles() {
+        return $this->belongsToMany('App\Models\Role');
+    }
 }
