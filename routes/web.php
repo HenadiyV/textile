@@ -14,4 +14,25 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('rest','RestTestController')->names('restTest');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['namespace'=>'Textile','prefix'=>'textile'],function(){
+    Route::resource('products','ProductController')->names('textile.products');
+});
+
+//Route::resource('rest','RestTestController')->names('restTest');
+
+// Админка
+$groupData=[
+    'namespace' => 'Textile\Admin',
+    'prefix'    => 'admin/textile',
+];
+Route::group($groupData, function(){
+   //TextileCategory
+    $methods=['index','edit','update','create','store',];
+    Route::resource('categories','CategoryController')
+        ->only($methods)
+        ->names('textile.admin.categories');
+});

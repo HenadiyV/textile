@@ -19,10 +19,10 @@ use Illuminate\Support\Str;
 $factory->define(\App\Models\TextileCategory::class, function (Faker $faker)  {
 
     $faker = \Faker\Factory::create('ru_RU');
-    $category=$faker->sentence(rand(2,5),true);
+    $category=$faker->sentence(rand(2,4),true);
     return [
         'slug'=>Str::slug($category,'-'),// mt_rand(0000000000,9999999999)random_int(0,10),
-        'category'=>$category,// mt_rand(0000000000,9999999999)random_int(0,10),
+        'title'=>$category,// mt_rand(0000000000,9999999999)random_int(0,10),
         'info_category'=>$faker->word,//Str::random(10),
     ];
 });

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
            // $table->text('info_user')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
