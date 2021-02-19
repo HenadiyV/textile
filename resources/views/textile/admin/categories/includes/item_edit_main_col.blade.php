@@ -17,7 +17,7 @@
                     <div class="tab-panel active" id="maindata" role="tabpanel">
                         <div class="form-group">
                             <label for="title">Категория</label>
-                            <input type="text" value="{{$category->title}}"
+                            <input type="text" value="{{old('title',$category->title)}}"
                                    name="title"
                                    id="title"
                                    class="form-control"
@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group">
                             <label for="slug">Интедефикатор</label>
-                            <input type="text" name="slug" value="{{$category->slug}}"
+                            <input type="text" name="slug" value="{{old('slug',$category->slug)}}"
                             id="slug" class="form-control">
                         </div>
                         <div class="form-group">
@@ -42,7 +42,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="info_category"></label>
+                            <label for="info_category">Описание</label>
                             <textarea name="info_category" id="info_category" cols="30" rows="3" class="form-control">
                                 {{old('info_category',$category->info_category)}}
                             </textarea>

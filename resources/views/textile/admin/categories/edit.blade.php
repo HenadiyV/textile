@@ -3,9 +3,14 @@
 @php
 /** @var \App\Models\TextileCategory $category */
 @endphp
-<form method="POST" action="{{route('textile.admin.categories.update',$category->id)}}">
-    @method('PATCH')
-    @csrf
+@if($category->exists)
+        <form method="POST" action="{{route('textile.admin.categories.update',$category->id)}}">
+        @method('PATCH')
+    @else
+        <form method="POST" action="{{route('textile.admin.categories.store')}}">
+     @endif
+        @csrf
+
     <div class="container">
         @php
             /** @var \Illuminate\Support\ViewErrorBag $errors */

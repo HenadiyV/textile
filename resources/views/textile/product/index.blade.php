@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<table>
+
+    <div class="container">
+<table><tr><th>ID</th><th>ID-Cat.</th><th>Art.</th><th>Name</th><th>Pur. price</th>
+        <th>Sel. price</th><th>Count</th><th>Color</th><th>sales_count</th><th>description</th>
+        <th>image</th><th>active_product</th><th>info_product</th></tr>
     @foreach($items as $item)
         <tr>
             <td>{{$item->id}}</td>
@@ -22,5 +26,6 @@
         @endforeach
 
 </table>
-<img src='/public/upload/product/product.jpg'>
+    </div>
+<img src='../../../../public/upload/product/product.jpg'>
 @endsection
